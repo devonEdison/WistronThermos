@@ -1,25 +1,26 @@
 package com.wits.wistronthermos;
 
-import android.app.Activity;
+import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.idevicesinc.sweetblue.utils.BluetoothEnabler;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class HelloActivity extends AppCompatActivity {
 
@@ -49,18 +50,80 @@ public class HelloActivity extends AppCompatActivity {
             }
         });
     }
-
+    final static int MY_PERMISSIONS_REQUEST_LOCATION = 0;
+    final static int BLETURNON=1;
     @Override
     protected void onStart() {
         super.onStart();
-        //check permission
-        BluetoothEnabler.start(this, new BluetoothEnabler.DefaultBluetoothEnablerFilter() {
-            @Override
-            public Please onEvent(BluetoothEnabler.BluetoothEnablerFilter.BluetoothEnablerEvent e) {
-                return super.onEvent(e);
+        // 1 check locatoin.
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(HelloActivity.this, Manifest.permission.ACCESS_FINE_LOCATION )) {
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                ActivityCompat.requestPermissions(HelloActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(HelloActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
+                        MY_PERMISSIONS_REQUEST_LOCATION);
             }
-        });
+        }else{
+            //location permissions get do tasks you want.
+        }
 
+        // 2.check bluetooth
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            Toast.makeText(HelloActivity.this,"Device does not support Bluetooth",Toast.LENGTH_LONG).show();
+        } else {
+            if (!mBluetoothAdapter.isEnabled()) {
+                // Bluetooth is not enable :)
+                Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(turnOn, BLETURNON);
+            }
+        }
+
+//        //check permission
+//        BluetoothEnabler.start(this, new BluetoothEnabler.DefaultBluetoothEnablerFilter() {
+//            @Override
+//            public Please onEvent(BluetoothEnabler.BluetoothEnablerFilter.BluetoothEnablerEvent e) {
+//                return super.onEvent(e);
+//            }
+//        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode){
+            case BLETURNON:
+                Log.d(TAG,"check result Code = " + resultCode);
+                if(resultCode == -1){
+                    //get permmision
+                }else{
+                    Toast.makeText(HelloActivity.this,"拜託要給我藍芽權限",Toast.LENGTH_LONG).show();
+                }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the task you need to do.
+                } else {
+                    Toast.makeText(HelloActivity.this,"拜託要給我定位權限",Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+        }
     }
 
     @Override
