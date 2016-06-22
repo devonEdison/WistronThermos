@@ -1,6 +1,7 @@
 package com.wits.wistronthermos;
 
 import android.Manifest;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
@@ -9,34 +10,34 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-public class HelloActivity extends AppCompatActivity {
+public class HelloActivity extends Activity {
 
     private static final String TAG = "HelloActivity";
     SimpleAdapter adapter;
     ListView mListView;
+    Button startButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
 
         mListView = (ListView)findViewById(R.id.listView);
-        // set adapter
+        //set adapter
         adapter = new SimpleAdapter(HelloActivity.this);
         adapter.add("Shop Thermos Connected Products");
         adapter.add("About Thermos Connecting Products");
+        //set mListView
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -49,24 +50,33 @@ public class HelloActivity extends AppCompatActivity {
                 }
             }
         });
+        //button
+        startButton = (Button)findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HelloActivity.this, SetUpProfileActivity.class);
+//                intent.putExtra(EXTRA_MESSAGE, mList.get(0));
+                startActivity(intent);
+            }
+        });
     }
     final static int MY_PERMISSIONS_REQUEST_LOCATION = 0;
     final static int BLETURNON=1;
     @Override
     protected void onStart() {
         super.onStart();
-        // 1 check locatoin.
+        // 1 check locatoin permission
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(HelloActivity.this, Manifest.permission.ACCESS_FINE_LOCATION )) {
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
+                //第2次進入apk或是之後進入apk都會進來這
                 ActivityCompat.requestPermissions(HelloActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
                         MY_PERMISSIONS_REQUEST_LOCATION);
             } else {
                 // No explanation needed, we can request the permission.
+                //第一次進入apk會進來這
                 ActivityCompat.requestPermissions(HelloActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -88,13 +98,6 @@ public class HelloActivity extends AppCompatActivity {
             }
         }
 
-//        //check permission
-//        BluetoothEnabler.start(this, new BluetoothEnabler.DefaultBluetoothEnablerFilter() {
-//            @Override
-//            public Please onEvent(BluetoothEnabler.BluetoothEnablerFilter.BluetoothEnablerEvent e) {
-//                return super.onEvent(e);
-//            }
-//        });
     }
 
     @Override
@@ -104,7 +107,7 @@ public class HelloActivity extends AppCompatActivity {
             case BLETURNON:
                 Log.d(TAG,"check result Code = " + resultCode);
                 if(resultCode == -1){
-                    //get permmision
+                    //get permission
                 }else{
                     Toast.makeText(HelloActivity.this,"拜託要給我藍芽權限",Toast.LENGTH_LONG).show();
                 }
@@ -133,8 +136,6 @@ public class HelloActivity extends AppCompatActivity {
 
 
     public class SimpleAdapter extends ArrayAdapter<String> {
-        private ArrayList<String> items = new ArrayList<String>();
-
         public SimpleAdapter(Context context) {
             super(context, 0);
         }
@@ -146,13 +147,13 @@ public class HelloActivity extends AppCompatActivity {
             if(v == null){
                 v = LayoutInflater.from(getContext()).inflate(R.layout.simple_list_row, null);
                 holder = new Holder();
-                holder.item_name = (TextView) v.findViewById(R.id.row_title);
+                holder.row_name = (TextView) v.findViewById(R.id.row_name);
                 v.setTag(holder);
             }else{
                 holder = (Holder) v.getTag();
             }
 
-            holder.item_name.setText(getItem(position));
+            holder.row_name.setText(getItem(position));
 
             return v;
         }
@@ -161,7 +162,7 @@ public class HelloActivity extends AppCompatActivity {
          * View holder for the views we need access to
          */
         private class Holder {
-            public TextView item_name;
+            public TextView row_name;
         }
     }
 }
