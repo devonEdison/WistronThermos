@@ -17,19 +17,19 @@ import android.widget.TextView;
 public class SetUpProfileActivity extends Activity {
     SimpleImageAdapter adapter;
     ListView mListView;
+    TextView cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up_profile);
+
         mListView = (ListView)findViewById(R.id.mListView);
         //set adapter
         adapter = new SimpleImageAdapter(SetUpProfileActivity.this);
 //        adapter.add(new SampleItem(getResources().getString(R.string.lucida_string00000027), R.drawable.icon_menu_home));
-
         adapter.add(new SampleItem("Use Fitbit Profile",R.drawable.fitbitblack));
         adapter.add(new SampleItem("Create My Own Prfile",0));
 
-//        adapter.add("About Thermos Connecting Products");
         //set mListView
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,6 +41,15 @@ public class SetUpProfileActivity extends Activity {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")));
 
                 }
+            }
+        });
+
+        //set cancel
+        cancel = (TextView) findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }
