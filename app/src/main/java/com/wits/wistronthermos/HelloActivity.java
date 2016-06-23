@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import multipleimageselect.helpers.Constants;
+
 public class HelloActivity extends Activity {
 
     private static final String TAG = "HelloActivity";
@@ -55,14 +57,14 @@ public class HelloActivity extends Activity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HelloActivity.this, SetUpProfileActivity.class);
+                Intent intent = new Intent(HelloActivity.this, SetupProfileActivity.class);
 //                intent.putExtra(EXTRA_MESSAGE, mList.get(0));
                 startActivity(intent);
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
     }
-    final static int MY_PERMISSIONS_REQUEST_LOCATION = 0;
-    final static int BLETURNON=1;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -73,13 +75,13 @@ public class HelloActivity extends Activity {
                 //第2次進入apk或是之後進入apk都會進來這
                 ActivityCompat.requestPermissions(HelloActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
-                        MY_PERMISSIONS_REQUEST_LOCATION);
+                        Constants.MY_PERMISSIONS_REQUEST_LOCATION);
             } else {
                 // No explanation needed, we can request the permission.
                 //第一次進入apk會進來這
                 ActivityCompat.requestPermissions(HelloActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
-                        MY_PERMISSIONS_REQUEST_LOCATION);
+                        Constants.MY_PERMISSIONS_REQUEST_LOCATION);
             }
         }else{
             //location permissions get do tasks you want.
@@ -94,7 +96,7 @@ public class HelloActivity extends Activity {
             if (!mBluetoothAdapter.isEnabled()) {
                 // Bluetooth is not enable :)
                 Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(turnOn, BLETURNON);
+                startActivityForResult(turnOn, Constants.BLETURNON);
             }
         }
 
@@ -104,7 +106,7 @@ public class HelloActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch(requestCode){
-            case BLETURNON:
+            case Constants.BLETURNON:
                 Log.d(TAG,"check result Code = " + resultCode);
                 if(resultCode == -1){
                     //get permission
@@ -117,7 +119,7 @@ public class HelloActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_LOCATION: {
+            case Constants.MY_PERMISSIONS_REQUEST_LOCATION: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay! Do the task you need to do.

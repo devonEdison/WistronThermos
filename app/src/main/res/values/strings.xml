@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">WistronThermos</string>
+    <string name="app_name">Thermos</string>
     <string name="setup_info">Make setup fast and easy by using your Fitbit profile! \nJust tap to enable, sign into your Fitbit account, and \nwe will use the information you already provided to \nFitbit to create your Thermos Smart Lid app profile. \n\nYour hydration stats will automatically be synced \nfrom your Thermos Smart Lid app to your Fitbit \naccount each time you finish a bottle of water.</string>
+    <string name="skip_profile_setup">Skip Profile Setup.</string>
+    <string name="limit_exceeded">Can select a maximum of %d images</string>
+    <string name="already_selected" formatted="false">you already selected %d images (%d/1)</string>
+    <string name="six_photo_string">please select 1 photos</string>
+    <string name="next">Next</string>
 </resources>
