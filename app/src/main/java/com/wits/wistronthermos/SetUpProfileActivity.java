@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class SetUpProfileActivity extends Activity {
+public class SetupProfileActivity extends Activity {
     SimpleImageAdapter adapter;
     ListView mListView;
     TextView cancel;
@@ -25,7 +25,7 @@ public class SetUpProfileActivity extends Activity {
 
         mListView = (ListView)findViewById(R.id.mListView);
         //set adapter
-        adapter = new SimpleImageAdapter(SetUpProfileActivity.this);
+        adapter = new SimpleImageAdapter(SetupProfileActivity.this);
 //        adapter.add(new SampleItem(getResources().getString(R.string.lucida_string00000027), R.drawable.icon_menu_home));
         adapter.add(new SampleItem("Use Fitbit Profile",R.drawable.fitbitblack));
         adapter.add(new SampleItem("Create My Own Prfile",0));
@@ -38,8 +38,9 @@ public class SetUpProfileActivity extends Activity {
                 if(position == 0 ){
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.yahoo.com")));
                 } else {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")));
-
+                    Intent intent = new Intent(SetupProfileActivity.this, SetupProfileNameActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
                 }
             }
         });
@@ -52,6 +53,13 @@ public class SetUpProfileActivity extends Activity {
                 onBackPressed();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.overridePendingTransition(0, 0);
+
     }
 
     @Override
