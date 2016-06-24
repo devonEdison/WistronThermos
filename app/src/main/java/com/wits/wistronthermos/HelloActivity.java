@@ -45,9 +45,9 @@ public class HelloActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if(position == 0 ){
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.yahoo.com")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.thermos.com/product_catalog.aspx?CatCode=CONN")));
                 } else {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.thermos.com/about.aspx")));
 
                 }
             }

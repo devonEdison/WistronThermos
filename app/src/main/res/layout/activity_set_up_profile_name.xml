@@ -64,21 +64,40 @@
         android:layout_alignParentStart="true"
         android:id="@+id/view1" />
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/avatar"
-        android:background="@mipmap/unknow"
-        android:layout_below="@id/view"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/view"
+        android:id="@+id/avatar_relativelayout"
+        >
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/avatar"
+            android:background="@mipmap/unknow" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/btn_lucida"/>
+    </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/mUserTextview"
+        android:layout_below="@+id/avatar_relativelayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#FF000000"
-        android:layout_below="@id/avatar"
-        android:layout_marginTop="40dp"
+        android:layout_below="@id/avatar_relativelayout"
+        android:layout_marginTop="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/view2" />
@@ -87,6 +106,7 @@
         android:layout_height="35dp"
         android:layout_below="@id/view2"
         android:hint="please enter your name"
+        android:inputType="textPersonName"
         android:id="@+id/edit_name"
         android:background="@android:color/transparent"
         android:layout_marginLeft="20sp"/>
@@ -108,4 +128,5 @@
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

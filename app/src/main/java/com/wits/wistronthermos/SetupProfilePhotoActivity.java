@@ -1,12 +1,11 @@
 package com.wits.wistronthermos;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.graphics.Paint;
-import android.media.ExifInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,14 +13,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import multipleimageselect.activities.AlbumSelectActivity;
 import multipleimageselect.helpers.Constants;
 import multipleimageselect.models.Image;
@@ -29,7 +29,7 @@ import multipleimageselect.models.Image;
 
 public class SetupProfilePhotoActivity extends Activity {
     private static final String TAG = "SetupProfilePhotoActivity";
-    TextView skip,cancel,next,edit_photo;
+    TextView skip,cancel,next,edit_photo,mUserTextview;
     ImageButton avatar;
     final static int SELECT_PICTURE = 200;
     @Override
@@ -46,45 +46,86 @@ public class SetupProfilePhotoActivity extends Activity {
         });
         skip = (TextView)findViewById(R.id.skip);
         skip.setPaintFlags(skip.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);//add underline.= =
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SetupProfilePhotoActivity.this, SetupProfileEmailActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
         next = (TextView)findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(SetupProfilePhotoActivity.this, SetupProfileNameActivity.class);
-//                startActivity(intent);
-//                overridePendingTransition(0, 0);
+                Intent intent = new Intent(SetupProfilePhotoActivity.this, SetupProfileEmailActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
         edit_photo = (TextView)findViewById(R.id.edit_photo);
         edit_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SetupProfilePhotoActivity.this, AlbumSelectActivity.class);
-                intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 1);
-                startActivityForResult(intent, SELECT_PICTURE);
+                int permissionCheck = ContextCompat.checkSelfPermission(SetupProfilePhotoActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(
+                            SetupProfilePhotoActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.WRITE_EXTERNAL_STORAGE);
+                }else {
+                    Intent intent = new Intent(SetupProfilePhotoActivity.this, AlbumSelectActivity.class);
+                    intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 1);
+                    startActivityForResult(intent, SELECT_PICTURE);
+                }
             }
         });
         avatar = (ImageButton)findViewById(R.id.avatar);
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //start AlbumSelectActivity activity
-                Intent intent = new Intent(SetupProfilePhotoActivity.this, AlbumSelectActivity.class);
-                //set limit on number of images that can be selected, default is 10
-                intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 1);
-                startActivityForResult(intent, SELECT_PICTURE);
+                int permissionCheck = ContextCompat.checkSelfPermission(SetupProfilePhotoActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(
+                            SetupProfilePhotoActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.WRITE_EXTERNAL_STORAGE);
+                } else {
+                    //start AlbumSelectActivity activity
+                    Intent intent = new Intent(SetupProfilePhotoActivity.this, AlbumSelectActivity.class);
+                    //set limit on number of images that can be selected, default is 10
+                    intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 1);
+                    startActivityForResult(intent, SELECT_PICTURE);
+                }
             }
         });
+
+        //setup sharedpreference
+        sharedPref = SetupProfilePhotoActivity.this.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+
+        //user_name
+        mUserTextview = (TextView)findViewById(R.id.mUserTextview);
     }
 
+    SharedPreferences sharedPref;
     @Override
     protected void onStart() {
         super.onStart();
-        int permissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.WRITE_EXTERNAL_STORAGE);
+
+        //set user name
+        String user_name = sharedPref.getString(getString(R.string.preference_user_name),"");
+        mUserTextview.setText(user_name);
+
+        //set user profile photo
+        String realPath = sharedPref.getString(getString(R.string.preference_user_photo_real_path),"");
+        if(realPath.contains("http")){
+
+        }else{
+            Glide.with(SetupProfilePhotoActivity.this)
+                    .load(new File(realPath))
+                    .bitmapTransform(new CenterCrop(SetupProfilePhotoActivity.this),new RoundedCornersTransformation(SetupProfilePhotoActivity.this,200,0))
+                    .error(R.mipmap.unknow)
+                    .into(avatar);
         }
+
     }
 
     @Override
@@ -99,8 +140,11 @@ public class SetupProfilePhotoActivity extends Activity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay! Do the task you need to do.
+                    Intent intent = new Intent(SetupProfilePhotoActivity.this, AlbumSelectActivity.class);
+                    intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 1);
+                    startActivityForResult(intent, SELECT_PICTURE);
                 } else {
-                    finish();
+                    Toast.makeText(SetupProfilePhotoActivity.this,"please give me permissions...",Toast.LENGTH_LONG);
                 }
                 return;
             }
@@ -122,35 +166,18 @@ public class SetupProfilePhotoActivity extends Activity {
                     //我們這裡只會拿一張照片 due to limit the NTENT_EXTRA_LIMIT =1 in AlbumSelectActivity
                     String realPath = images.get(0).path;
                     Log.d(TAG, "devon check realPath is = " + realPath);
-                    Uri fileUri = Uri.parse(new File(realPath).toString());
+//                    Uri fileUri = Uri.parse(new File(realPath).toString());//we don't need the Uri, maybe will.
+
+                    //setup name
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(getString(R.string.preference_user_photo_real_path), realPath);
+                    editor.commit();
+
                     Glide.with(SetupProfilePhotoActivity.this)
                             .load(new File(realPath))
-                            .centerCrop()
-                            .bitmapTransform(new CropCircleTransformation(SetupProfilePhotoActivity.this))
+                            .bitmapTransform(new CenterCrop(SetupProfilePhotoActivity.this),new RoundedCornersTransformation(SetupProfilePhotoActivity.this,200,0))
                             .error(R.mipmap.unknow)
                             .into(avatar);
-
-
-
-                    //not used
-//                    BitmapFactory.Options options = new BitmapFactory.Options();
-//                    options.inJustDecodeBounds = true;
-//                    BitmapFactory.decodeFile(realPath, options);
-//
-//                    Matrix vMatrix = new Matrix();
-//                    vMatrix.setRotate(readPictureDegree(realPath));
-//
-//                    if (options.outHeight > 4000 || options.outWidth > 4000) {
-//                        options.inSampleSize = 2; // set inSampleSize =2
-//                    }
-//                    options.inJustDecodeBounds = false;
-//                    Bitmap bm,bm2 ;
-//                    int position ;
-//                    bm = BitmapFactory.decodeFile(realPath, options);
-//                    if(readPictureDegree(realPath) != 0) {
-//                        bm2 = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(), bm.getHeight(), vMatrix, true);
-//                    }else{
-//                    }
 
                 } else if (resultCode == RESULT_CANCELED && data == null) {
                     //do nothing
@@ -165,38 +192,5 @@ public class SetupProfilePhotoActivity extends Activity {
         overridePendingTransition(0, 0);
 
     }
-    public  static BitmapFactory.Options getOutFull(String photoPath) {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(photoPath, options);
-        return options;
-    }
 
-    public int readPictureDegree(String path) {
-        int degree = 0;
-        try {
-            ExifInterface exifInterface = new ExifInterface(path);
-            int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-            switch (orientation) {
-                case ExifInterface.ORIENTATION_ROTATE_90:
-                    degree = 90;
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_180:
-                    degree = 180;
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_270:
-                    degree = 270;
-                    break;
-
-                default:
-
-                    degree = 0;
-
-                    break;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return degree;
-    }
 }
