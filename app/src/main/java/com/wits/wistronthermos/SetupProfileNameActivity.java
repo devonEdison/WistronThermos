@@ -50,10 +50,14 @@ public class SetupProfileNameActivity extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //setup name
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.preference_user_name), edit_name.getText().toString());
-                editor.commit();
+                if(!"".equals(user_name) && "".equals(edit_name.getText().toString())){
+
+                }else {
+                    //setup name
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(getString(R.string.preference_user_name), edit_name.getText().toString());
+                    editor.commit();
+                }
 
                 Intent intent = new Intent(SetupProfileNameActivity.this, SetupProfilePhotoActivity.class);
                 startActivity(intent);
@@ -79,18 +83,23 @@ public class SetupProfileNameActivity extends Activity {
         super.onBackPressed();
         this.overridePendingTransition(0, 0);
     }
-
+    String user_name = "";
     @Override
     protected void onStart() {
         super.onStart();
         //set user name
-        String user_name = sharedPref.getString(getString(R.string.preference_user_name),"");
+        user_name = sharedPref.getString(getString(R.string.preference_user_name),"");
         mUserTextview.setText(user_name);
 
         //set user profile photo
         String realPath = sharedPref.getString(getString(R.string.preference_user_photo_real_path),"");
-        if(realPath.contains("http")){
-
+        if(realPath.contains("https://")){
+            Glide.with(SetupProfileNameActivity.this)
+                    .load(realPath)
+                    .centerCrop()
+                    .bitmapTransform(new CenterCrop(SetupProfileNameActivity.this),new RoundedCornersTransformation(SetupProfileNameActivity.this,200,0))
+                    .error(R.mipmap.unknow)
+                    .into(avatar);
         }else{
             Glide.with(SetupProfileNameActivity.this)
                     .load(new File(realPath))

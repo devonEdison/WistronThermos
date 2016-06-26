@@ -7,10 +7,15 @@
     <string name="already_selected" formatted="false">you already selected %d images (%d/1)</string>
     <string name="six_photo_string">please select 1 photos</string>
     <string name="next">Next</string>
+    <string name="title_fitbit_authentication">Fitbit</string>
 
     <!--sharedpreference-->
     <string name="preference_file_key">com.thermos.wistron.sharedpreferences</string>
     <string name="preference_user_name">preference_user_name</string>
     <string name="preference_user_photo_real_path">preference_user_photo_real_path</string>
     <string name="preference_user_email">preference_user_email</string>
+    <string name="preference_user_fitbit_access_token">preference_user_fitbit_access_token</string>
+    <string name="preference_user_fitbit_user_id">preference_user_fitbit_user_id</string>
+    <string name="preference_user_waterUnit">preference_user_waterUnit</string>
+
 </resources>

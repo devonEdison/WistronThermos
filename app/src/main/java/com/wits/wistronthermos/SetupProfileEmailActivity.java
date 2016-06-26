@@ -93,8 +93,13 @@ public class SetupProfileEmailActivity extends Activity {
 
         //set user profile photo
         String realPath = sharedPref.getString(getString(R.string.preference_user_photo_real_path),"");
-        if(realPath.contains("http")){
-
+        if(realPath.contains("https://")){
+            Glide.with(SetupProfileEmailActivity.this)
+                    .load(realPath)
+                    .centerCrop()
+                    .bitmapTransform(new CenterCrop(SetupProfileEmailActivity.this),new RoundedCornersTransformation(SetupProfileEmailActivity.this,200,0))
+                    .error(R.mipmap.unknow)
+                    .into(avatar);
         }else{
             Glide.with(SetupProfileEmailActivity.this)
                     .load(new File(realPath))

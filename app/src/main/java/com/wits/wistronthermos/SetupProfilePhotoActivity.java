@@ -109,15 +109,19 @@ public class SetupProfilePhotoActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-
         //set user name
         String user_name = sharedPref.getString(getString(R.string.preference_user_name),"");
         mUserTextview.setText(user_name);
 
         //set user profile photo
         String realPath = sharedPref.getString(getString(R.string.preference_user_photo_real_path),"");
-        if(realPath.contains("http")){
-
+        if(realPath.contains("https://")){
+            Glide.with(SetupProfilePhotoActivity.this)
+                    .load(realPath)
+                    .centerCrop()
+                    .bitmapTransform(new CenterCrop(SetupProfilePhotoActivity.this),new RoundedCornersTransformation(SetupProfilePhotoActivity.this,200,0))
+                    .error(R.mipmap.unknow)
+                    .into(avatar);
         }else{
             Glide.with(SetupProfilePhotoActivity.this)
                     .load(new File(realPath))

@@ -96,7 +96,7 @@ public class HelloActivity extends Activity {
             if (!mBluetoothAdapter.isEnabled()) {
                 // Bluetooth is not enable :)
                 Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(turnOn, Constants.BLETURNON);
+                startActivityForResult(turnOn, Constants.BLE_TURNON);
             }
         }
 
@@ -106,7 +106,7 @@ public class HelloActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch(requestCode){
-            case Constants.BLETURNON:
+            case Constants.BLE_TURNON:
                 Log.d(TAG,"check result Code = " + resultCode);
                 if(resultCode == -1){
                     //get permission
