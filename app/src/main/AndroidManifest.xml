@@ -55,11 +55,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SetupProfileEmailActivity"></activity>
+        <activity android:name=".SetupProfileEmailActivity" />
         <activity
             android:name=".FitbitAuthenticationActivity"
-            android:label="@string/title_fitbit_authentication" >
-        </activity>
+            android:label="@string/title_fitbit_authentication"></activity>
+        <activity android:name=".InitSetupActivity"></activity>
     </application>
 
 </manifest>

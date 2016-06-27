@@ -2,6 +2,7 @@ package com.wits.wistronthermos;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -45,9 +46,9 @@ public class SetupProfileEmailActivity extends Activity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(SetupProfileEmailActivity.this, SetupProfilePhotoActivity.class);
-//                startActivity(intent);
-//                overridePendingTransition(0, 0);
+                Intent intent = new Intent(SetupProfileEmailActivity.this, InitSetupActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
         next = (TextView)findViewById(R.id.next);
@@ -61,9 +62,9 @@ public class SetupProfileEmailActivity extends Activity {
                 editor.putString(getString(R.string.preference_user_email), edit_email.getText().toString());
                 editor.commit();
 
-//                Intent intent = new Intent(SetupProfileNameActivity.this, SetupProfilePhotoActivity.class);
-//                startActivity(intent);
-//                overridePendingTransition(0, 0);
+                Intent intent = new Intent(SetupProfileEmailActivity.this, InitSetupActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
 

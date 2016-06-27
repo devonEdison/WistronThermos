@@ -175,37 +175,7 @@ public class SetupProfilePhotoActivity extends Activity {
                 }
             }
         }).show();
-//        AlertDialog.Builder builder_chooseImage = new AlertDialog.Builder(SetupProfilePhotoActivity.this);
-//        builder_chooseImage.setPositiveButton("Choose from Library", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int whichButton) {
 
-//                    }
-//                })
-//                .setNegativeButton("Take a Photo", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//                        // take a picture
-//                        dialog.dismiss();
-//                        try {
-//                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                            // Ensure that there's a camera activity to handle the intent
-//                            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//                                // Create the File where the photo should go
-//                                File photoFile = null;
-//                                photoFile = getOutputMediaFile();
-//                                // Continue only if the File was successfully created
-//                                if (photoFile != null) {
-//                                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-//                                    startActivityForResult(takePictureIntent, IMAGE_SHOOT);
-//                                }
-//                            }
-//                        } catch (Exception e) {
-//                            Toast.makeText(SetupProfilePhotoActivity.this, "image error", Toast.LENGTH_LONG).show();
-//                            Log.e(e.getClass().getName(), e.getMessage(), e);
-//                        }
-//                    }
-//                }).show();
     }
 
     String mCurrentPhotoPath="";
