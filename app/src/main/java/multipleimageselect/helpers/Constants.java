@@ -18,6 +18,6 @@ public class Constants {
     //permission & onActivityResult Request
     public final static int MY_PERMISSIONS_REQUEST_LOCATION = 0;
     public final static int BLE_TURNON=1;
-    public final static int WRITE_EXTERNAL_STORAGE = 2;
+    public final static int CAMERA_WRITE_EXTERNAL_STORAGE = 2;
     public final static int GET_FITBIT_REQUEST = 3;
 }
