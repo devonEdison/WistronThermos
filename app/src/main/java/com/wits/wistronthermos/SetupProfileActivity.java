@@ -140,7 +140,8 @@ public class SetupProfileActivity extends Activity {
                     editor.commit();
 
                     //進入下一個activity
-                    Intent intent = new Intent(SetupProfileActivity.this, SetupProfileNameActivity.class);
+                    Intent intent = new Intent(SetupProfileActivity.this, FitbitEnableActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
 
