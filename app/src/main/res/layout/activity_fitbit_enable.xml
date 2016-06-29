@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#31353B"
+    android:background="#222222"
     tools:context="com.wits.wistronthermos.FitbitEnableActivity">
 
     <RelativeLayout
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#31353B"
+        android:background="#222222"
         android:id="@+id/actionbar">
         <TextView
             android:layout_width="wrap_content"
@@ -90,12 +90,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/fitbit_enable_info"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
         android:gravity="center"
         android:id="@+id/textView7"
         android:layout_below="@+id/avatar_relativelayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="55dp"/>
 
 </RelativeLayout>

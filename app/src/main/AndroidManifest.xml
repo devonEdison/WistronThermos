@@ -62,6 +62,16 @@
         <activity android:name=".InitSetupActivity"/>
         <activity android:name=".FitbitEnableActivity">
         </activity>
+        <activity android:name=".InitSetupConnectActivity">
+        </activity>
+        <activity android:name=".InitSetupNoSmartLidFoundActivity">
+        </activity>
+        <activity android:name=".InitSetupConnectSupportActivity">
+        </activity>
+        <activity android:name=".InitSetupLegalActivity">
+        </activity>
+        <activity android:name=".InitSetupLegalMessageActivity">
+        </activity>
     </application>
 
 </manifest>

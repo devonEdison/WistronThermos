@@ -6,11 +6,11 @@
         android:radius="100dp"/>
     
     <!-- 背景色 -->
-    <solid android:color="#00FFFFFF" />
+    <solid android:color="#FF0000" />
     
     <!-- 框線 -->
     <stroke
-        android:width="3dp"
-        android:color="#FF999999" />
+        android:width="8dp"
+        android:color="#FFFFFFFF" />
 
 </shape>

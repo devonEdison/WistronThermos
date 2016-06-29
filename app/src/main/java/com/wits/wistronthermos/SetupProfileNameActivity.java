@@ -93,7 +93,7 @@ public class SetupProfileNameActivity extends Activity {
 
         //set user profile photo
         String realPath = sharedPref.getString(getString(R.string.preference_user_photo_real_path),"");
-        if(realPath.contains("https://")){
+        if(realPath.contains("http")){
             Glide.with(SetupProfileNameActivity.this)
                     .load(realPath)
                     .centerCrop()

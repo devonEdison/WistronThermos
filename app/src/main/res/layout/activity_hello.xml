@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#31353B"
+    android:background="#222222"
     tools:context="com.wits.wistronthermos.HelloActivity">
 <LinearLayout
     android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:dividerHeight="3dp"
+        android:dividerHeight="2dp"
         android:divider="#FF000000"/>
 </LinearLayout>
 

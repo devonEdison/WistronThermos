@@ -3,7 +3,6 @@ package com.wits.wistronthermos;
 import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -11,15 +10,13 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.wits.wistronthermos.adapters.SimpleAdapter;
 
 import multipleimageselect.helpers.Constants;
 
@@ -58,7 +55,6 @@ public class HelloActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HelloActivity.this, SetupProfileActivity.class);
-//                intent.putExtra(EXTRA_MESSAGE, mList.get(0));
                 startActivity(intent);
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
@@ -137,34 +133,5 @@ public class HelloActivity extends Activity {
     }
 
 
-    public class SimpleAdapter extends ArrayAdapter<String> {
-        public SimpleAdapter(Context context) {
-            super(context, 0);
-        }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup viewGroup) {
-            View v = convertView;
-            final Holder holder;
-            if(v == null){
-                v = LayoutInflater.from(getContext()).inflate(R.layout.simple_list_row, null);
-                holder = new Holder();
-                holder.row_name = (TextView) v.findViewById(R.id.row_name);
-                v.setTag(holder);
-            }else{
-                holder = (Holder) v.getTag();
-            }
-
-            holder.row_name.setText(getItem(position));
-
-            return v;
-        }
-
-        /**
-         * View holder for the views we need access to
-         */
-        private class Holder {
-            public TextView row_name;
-        }
-    }
 }

@@ -6,18 +6,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.wits.wistronthermos.adapters.SimpleImageAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,8 +37,8 @@ public class SetupProfileActivity extends Activity {
         //set adapter
         adapter = new SimpleImageAdapter(SetupProfileActivity.this);
 //        adapter.add(new SampleItem(getResources().getString(R.string.lucida_string00000027), R.drawable.icon_menu_home));
-        adapter.add(new SampleItem("Use Fitbit Profile",R.drawable.fitbitblack));
-        adapter.add(new SampleItem("Create My Own Prfile",0));
+        adapter.add(new SimpleImageAdapter.SampleItem("Use Fitbit Profile",R.drawable.fitbitblack));
+        adapter.add(new SimpleImageAdapter.SampleItem("Create My Own Prfile",0));
 
         //set mListView
         mListView.setAdapter(adapter);
@@ -161,56 +158,6 @@ public class SetupProfileActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.overridePendingTransition(0, 0);
-
-    }
-
-    private class SampleItem {
-        public String text;
-        public int iconRes;
-
-        public SampleItem(String text, int iconRes) {
-            this.text = text;
-            this.iconRes = iconRes;
-        }
-    }
-
-    public class SimpleImageAdapter extends ArrayAdapter<SampleItem> {
-        public SimpleImageAdapter(Context context) {
-            super(context, 0);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup viewGroup) {
-            View v = convertView;
-            final Holder holder;
-            if(v == null){
-                v = LayoutInflater.from(getContext()).inflate(R.layout.simple_image_list_row, null);
-                holder = new Holder();
-                holder.row_title = (TextView) v.findViewById(R.id.row_title);
-                holder.row_icon = (ImageView)v.findViewById(R.id.row_icon);
-                v.setTag(holder);
-            }else{
-                holder = (Holder) v.getTag();
-            }
-
-            holder.row_title.setText(getItem(position).text);
-            if ( position ==1 ) {
-                holder.row_icon.setVisibility(View.GONE);
-            } else {
-                holder.row_icon.setVisibility(View.VISIBLE);
-                holder.row_icon.setImageResource(getItem(position).iconRes);
-            }
-
-            return v;
-        }
-
-        /**
-         * View holder for the views we need access to
-         */
-        private class Holder {
-            public TextView row_title;
-            public ImageView row_icon;
-        }
+        this.overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
     }
 }

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.EditText;
@@ -53,7 +54,7 @@ public class SetupProfileEmailActivity extends Activity {
         });
         next = (TextView)findViewById(R.id.next);
         next.setEnabled(false);
-        next.setAlpha((float) 0.5);
+        next.setAlpha((float) 0.2);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +78,6 @@ public class SetupProfileEmailActivity extends Activity {
         //email edittext
         edit_email = (EditText) findViewById(R.id.edit_email);
 
-
         //setup sharedpreference
         sharedPref = SetupProfileEmailActivity.this.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -94,7 +94,7 @@ public class SetupProfileEmailActivity extends Activity {
 
         //set user profile photo
         String realPath = sharedPref.getString(getString(R.string.preference_user_photo_real_path),"");
-        if(realPath.contains("https://")){
+        if(realPath.contains("http")){
             Glide.with(SetupProfileEmailActivity.this)
                     .load(realPath)
                     .centerCrop()
@@ -126,11 +126,11 @@ public class SetupProfileEmailActivity extends Activity {
                     if(isInFront){
                         if (edit_email != null) {
                             //set button color
-                            if (!edit_email.getText().toString().equals("")) {
+                            if (isValidEmail(edit_email.getText().toString())) {
                                 next.setAlpha((float) 1.0);
                                 next.setEnabled(true);
                             } else {
-                                next.setAlpha((float) 0.5);
+                                next.setAlpha((float) 0.2);
                                 next.setEnabled(false);
                             }
                         }
@@ -143,6 +143,9 @@ public class SetupProfileEmailActivity extends Activity {
                 }
             },1000);
         }
+    }
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
     @Override
