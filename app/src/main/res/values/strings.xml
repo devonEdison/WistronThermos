@@ -16,6 +16,7 @@
     <string name="preference_file_key">com.thermos.wistron.sharedpreferences</string>
     <string name="preference_user_name">preference_user_name</string>
     <string name="preference_user_photo_real_path">preference_user_photo_real_path</string>
+    <string name="preference_user_age">preference_user_age</string>
     <string name="preference_user_email">preference_user_email</string>
     <string name="preference_user_fitbit_access_token">preference_user_fitbit_access_token</string>
     <string name="preference_user_fitbit_user_id">preference_user_fitbit_user_id</string>
