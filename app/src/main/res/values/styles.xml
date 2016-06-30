@@ -22,4 +22,10 @@
     <style name="TextAppearance">
         <item name="android:textColor">@color/half_white</item>
     </style>
+
+    <style name="ChangeDatePickerDivider" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

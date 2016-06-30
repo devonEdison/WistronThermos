@@ -31,6 +31,7 @@
         android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         <activity
             android:name=".SetupProfile.HelloActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -40,16 +41,20 @@
         </activity>
         <activity
             android:name=".SetupProfile.SetupProfileActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".SetupProfile.SetupProfileNameActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".SetupProfile.SetupProfilePhotoActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
             android:name="multipleimageselect.activities.AlbumSelectActivity"
             android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/MultipleImageSelectTheme">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -58,6 +63,7 @@
         <activity
             android:name="multipleimageselect.activities.ImageSelectActivity"
             android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/MultipleImageSelectTheme">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -65,47 +71,66 @@
         </activity>
         <activity
             android:name=".SetupProfile.SetupProfileEmailActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".SetupProfile.FitbitAuthenticationActivity"
             android:label="@string/title_fitbit_authentication"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".InitSetup.InitSetupActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".SetupProfile.FitbitEnableActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".InitSetup.InitSetupConnectActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".InitSetup.InitSetupNoSmartLidFoundActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".InitSetup.InitSetupConnectSupportActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".InitSetup.InitSetupLegalActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".InitSetup.InitSetupLegalMessageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".InitSetup.InitSetupPairCompleteActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".Hydration.HydrationActivity">
+        <activity
+            android:name=".Hydration.HydrationActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Hydration.HydrationPolicyActivity">
+        <activity
+            android:name=".Hydration.HydrationPolicyActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Hydration.HydrationAgeActivity">
+        <activity
+            android:name=".Hydration.HydrationAgeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ChangeDatePickerDivider">
+        </activity>
+        <activity android:name=".Hydration.HydrationSexActivity">
         </activity>
     </application>
 
