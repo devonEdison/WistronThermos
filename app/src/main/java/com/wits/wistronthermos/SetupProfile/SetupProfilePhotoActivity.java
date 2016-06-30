@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.SetupProfile;
 
 import android.Manifest;
 import android.app.Activity;
@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.cocosw.bottomsheet.BottomSheet;
+import com.wits.wistronthermos.R;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

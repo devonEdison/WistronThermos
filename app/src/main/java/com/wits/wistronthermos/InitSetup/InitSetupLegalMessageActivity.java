@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.InitSetup;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.wits.wistronthermos.R;
 
 import multipleimageselect.helpers.Constants;
 
@@ -26,7 +28,7 @@ public class InitSetupLegalMessageActivity extends Activity {
 
 		contentTextView = (TextView) findViewById(R.id.content);
 		if (title != null) {
-			contentTextView.setText(title + " 的一些狗屁policy 文章");
+			contentTextView.setText(title + " 的一些policy 文章");
 		}
 
 		cancel_releative = (RelativeLayout)findViewById(R.id.cancel_releative);

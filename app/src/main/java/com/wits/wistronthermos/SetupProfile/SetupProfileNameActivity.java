@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.SetupProfile;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.wits.wistronthermos.R;
 
 import java.io.File;
 

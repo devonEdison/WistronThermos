@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.InitSetup;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.wits.wistronthermos.R;
 import com.wits.wistronthermos.adapters.SimpleDarkAdapter;
 
 public class InitSetupConnectSupportActivity extends Activity {

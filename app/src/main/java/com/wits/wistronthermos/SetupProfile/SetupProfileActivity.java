@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.SetupProfile;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.wits.wistronthermos.R;
 import com.wits.wistronthermos.adapters.SimpleImageAdapter;
 
 import org.json.JSONException;

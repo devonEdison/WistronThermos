@@ -1,10 +1,12 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.InitSetup;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.wits.wistronthermos.R;
 
 public class InitSetupActivity extends Activity {
     TextView cancel,next;

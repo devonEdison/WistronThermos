@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFFFF"
-    tools:context="com.wits.wistronthermos.InitSetupConnectSupportActivity">
+    tools:context=".InitSetup.InitSetupLegalMessageActivity">
 
     <RelativeLayout
         android:id="@+id/actionbar"

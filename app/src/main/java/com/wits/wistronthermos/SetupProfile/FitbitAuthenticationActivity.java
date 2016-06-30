@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.SetupProfile;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.wits.wistronthermos.R;
 
 import java.util.HashMap;
 import java.util.Map;

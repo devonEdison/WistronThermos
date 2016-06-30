@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFFFF"
-    tools:context=".InitSetup.InitSetupLegalActivity">
+    tools:context=".Hydration.HydrationPolicyActivity">
     <RelativeLayout
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
@@ -14,85 +14,43 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:background="#222222">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:id="@+id/cancel_releative"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-            <TextView
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#FF999999"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/imageButton"
-                android:layout_toEndOf="@+id/imageButton"/>
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:src="@mipmap/back"
-                android:background="@null"/>
-        </RelativeLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Legal"
+            android:text="Cancel"
+            android:textColor="#FF999999"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/cancel"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Hydration Calculator"
             android:textColor="#FF999999"
             android:id="@+id/init_setup"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/actionbar"
-        android:background="#FFFFFFFF"/>
-
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/view"
+        android:layout_below="@id/actionbar"
         android:background="#FF999999"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="CHOOSE A TOPIC"
-        android:id="@+id/textView"
-        android:textColor="#80222222"
-        android:layout_below="@+id/view1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/textView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp">
+        android:id="@+id/linearLayout">
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -108,4 +66,27 @@
             android:layout_height="1dp"
             android:background="#FF000000"/>
     </LinearLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="hydration policy hydration policyhydration policyhydration policyhydration policyhydration policyhydration policyhydration policyhydration policy"
+        android:textColor="#80222222"
+        android:gravity="center"
+        android:id="@+id/textView13"
+        android:layout_above="@id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/view1"/>
+
 </RelativeLayout>

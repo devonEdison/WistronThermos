@@ -1,7 +1,9 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.InitSetup;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.wits.wistronthermos.R;
 
 public class InitSetupConnectActivity extends Activity {
 

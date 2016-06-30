@@ -28,17 +28,25 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Thermos"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".HelloActivity">
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        <activity
+            android:name=".SetupProfile.HelloActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SetupProfileActivity"/>
-        <activity android:name=".SetupProfileNameActivity"/>
-        <activity android:name=".SetupProfilePhotoActivity"/>
+        <activity
+            android:name=".SetupProfile.SetupProfileActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SetupProfile.SetupProfileNameActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SetupProfile.SetupProfilePhotoActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name="multipleimageselect.activities.AlbumSelectActivity"
             android:configChanges="orientation|screenSize"
@@ -55,22 +63,49 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SetupProfileEmailActivity"/>
         <activity
-            android:name=".FitbitAuthenticationActivity"
-            android:label="@string/title_fitbit_authentication"/>
-        <activity android:name=".InitSetupActivity"/>
-        <activity android:name=".FitbitEnableActivity">
+            android:name=".SetupProfile.SetupProfileEmailActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SetupProfile.FitbitAuthenticationActivity"
+            android:label="@string/title_fitbit_authentication"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".InitSetup.InitSetupActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SetupProfile.FitbitEnableActivity"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".InitSetupConnectActivity">
+        <activity
+            android:name=".InitSetup.InitSetupConnectActivity"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".InitSetupNoSmartLidFoundActivity">
+        <activity
+            android:name=".InitSetup.InitSetupNoSmartLidFoundActivity"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".InitSetupConnectSupportActivity">
+        <activity
+            android:name=".InitSetup.InitSetupConnectSupportActivity"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".InitSetupLegalActivity">
+        <activity
+            android:name=".InitSetup.InitSetupLegalActivity"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".InitSetupLegalMessageActivity">
+        <activity
+            android:name=".InitSetup.InitSetupLegalMessageActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".InitSetup.InitSetupPairCompleteActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".Hydration.HydrationActivity">
+        </activity>
+        <activity android:name=".Hydration.HydrationPolicyActivity">
+        </activity>
+        <activity android:name=".Hydration.HydrationAgeActivity">
         </activity>
     </application>
 

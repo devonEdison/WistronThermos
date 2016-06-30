@@ -1,4 +1,4 @@
-package com.wits.wistronthermos;
+package com.wits.wistronthermos.InitSetup;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
+import com.wits.wistronthermos.R;
 import com.wits.wistronthermos.adapters.SimpleAdapter;
 
 public class InitSetupNoSmartLidFoundActivity extends Activity {
 	ListView mListView;
 	SimpleAdapter adapter;
+	RelativeLayout search_again_relativelayout ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +41,15 @@ public class InitSetupNoSmartLidFoundActivity extends Activity {
 				} else if(position == 2 ){
 					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.thermos.com/about.aspx")));
 				}
+			}
+		});
+
+		search_again_relativelayout = (RelativeLayout)findViewById(R.id.search_again_relativelayout);
+		search_again_relativelayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(InitSetupNoSmartLidFoundActivity.this, InitSetupPairCompleteActivity.class);
+				startActivity(intent);
 			}
 		});
 	}

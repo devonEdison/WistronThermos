@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#222222"
-    tools:context="com.wits.wistronthermos.InitSetupNoSmartLidFoundActivity">
+    tools:context=".InitSetup.InitSetupNoSmartLidFoundActivity">
     <RelativeLayout
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
