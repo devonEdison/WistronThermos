@@ -38,7 +38,7 @@ public class SetupProfileActivity extends Activity {
         //set adapter
         adapter = new SimpleImageAdapter(SetupProfileActivity.this);
 //        adapter.add(new SampleItem(getResources().getString(R.string.lucida_string00000027), R.drawable.icon_menu_home));
-        adapter.add(new SimpleImageAdapter.SampleItem("Use Fitbit Profile",R.drawable.fitbitblack));
+        adapter.add(new SimpleImageAdapter.SampleItem("Use Fitbit Profile",R.mipmap.fitbitblack));
         adapter.add(new SimpleImageAdapter.SampleItem("Create My Own Prfile",0));
 
         //set mListView

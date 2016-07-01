@@ -17,9 +17,18 @@
     <string name="preference_user_name">preference_user_name</string>
     <string name="preference_user_photo_real_path">preference_user_photo_real_path</string>
     <string name="preference_user_age">preference_user_age</string>
+    <string name="preference_user_weight">preference_user_weight</string>
+    <string name="preference_user_height">preference_user_height</string>
     <string name="preference_user_email">preference_user_email</string>
+    <string name="preference_user_gender">preference_user_gender</string>
     <string name="preference_user_fitbit_access_token">preference_user_fitbit_access_token</string>
     <string name="preference_user_fitbit_user_id">preference_user_fitbit_user_id</string>
     <string name="preference_user_waterUnit">preference_user_waterUnit</string>
+
+    <!-- Hydration -->
+    <string name="select_your_weight">SELECT YOUR WEIGHT</string>
+    <string name="select_your_height">SELECT YOUR HEIGHT</string>
+    <string name="select_your_sex">SELECT YOUR SEX</string>
+
 
 </resources>

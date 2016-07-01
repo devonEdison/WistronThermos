@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
-        android:src="@drawable/fitbitblack" />
+        android:src="@mipmap/fitbitblack" />
 
     <TextView
         android:id="@+id/row_title"
