@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFFFF"
-    tools:context="com.wits.wistronthermos.Hydration.HydrationWeightActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFFFF"
+                tools:context="com.wits.wistronthermos.Hydration.HydrationActivityActivity">
 
     <RelativeLayout
         android:id="@+id/actionbar"
@@ -25,7 +25,7 @@
             android:layout_marginLeft="10dp"
             android:text="Back"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FF999999" />
+            android:textColor="#FF999999"/>
 
         <TextView
             android:id="@+id/init_setup"
@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Weight"
+            android:text="Activity"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FF999999" />
+            android:textColor="#FF999999"/>
 
         <TextView
             android:id="@+id/next"
@@ -48,7 +48,7 @@
             android:layout_marginRight="10dp"
             android:text="Next"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FF999999" />
+            android:textColor="#FF999999"/>
     </RelativeLayout>
 
 
@@ -58,65 +58,67 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/actionbar"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
-        android:text="@string/select_your_weight"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:gravity="center"
+        android:text="@string/select_your_daily_average_activity"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <HorizontalScrollView
         android:id="@+id/HRV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="30dp"
         android:adjustViewBounds="true"
         android:gravity="center_horizontal"
-        android:scrollbars="none"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:scrollbars="none">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ruler" />
+            android:src="@mipmap/ruler"/>
     </HorizontalScrollView>
 
     <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/ruler_circle"
         android:layout_alignTop="@+id/HRV"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ruler_circle">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="40sp"
-            android:text="48 kg"
             android:id="@+id/kg"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="WEIGHT"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="48 min"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <TextView
             android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/kg"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true" />
+            android:text="Per Day"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Skip This Step"
-        android:textStyle="italic"
-        android:id="@+id/skip"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
-
+        android:layout_marginBottom="20dp"
+        android:text="Skip This Step"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="italic"/>
 </RelativeLayout>

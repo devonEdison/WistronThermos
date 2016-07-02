@@ -18,6 +18,8 @@
     <string name="preference_user_photo_real_path">preference_user_photo_real_path</string>
     <string name="preference_user_age">preference_user_age</string>
     <string name="preference_user_weight">preference_user_weight</string>
+    <string name="preference_user_activity_duration">preference_user_activity_duration</string>
+    <string name="preference_user_intensity">preference_user_intensity</string>
     <string name="preference_user_height">preference_user_height</string>
     <string name="preference_user_email">preference_user_email</string>
     <string name="preference_user_gender">preference_user_gender</string>
@@ -27,7 +29,10 @@
 
     <!-- Hydration -->
     <string name="select_your_weight">SELECT YOUR WEIGHT</string>
-    <string name="select_your_height">SELECT YOUR HEIGHT</string>
+    <string name="select_your_height">SELECT YOUR HEIGHT</string>.
+    <string name="select_your_daily_average_activity">SELECT YOUR DAILY AVERAGE ACTIVITY DURATION</string>
+    <string name="select_your_activity_intensity">SELECT YOUR ACTIVITY INTENSITY</string>
+
     <string name="select_your_sex">SELECT YOUR SEX</string>
 
 

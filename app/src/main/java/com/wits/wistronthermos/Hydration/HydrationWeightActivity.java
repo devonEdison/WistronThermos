@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,9 +17,10 @@ import com.wits.wistronthermos.R;
 
 public class HydrationWeightActivity extends Activity {
     private static final String TAG = "HydrationWeightActivity";
-    TextView kg, cancel, next;
+    TextView kg, cancel, next, skip;
     HorizontalScrollView hsv;
     ViewTreeObserver observer;
+
     int my_weight ;
     SharedPreferences sharedPref;
     @Override
@@ -28,7 +30,7 @@ public class HydrationWeightActivity extends Activity {
 
         hsv = (HorizontalScrollView) findViewById(R.id.HRV);
         kg = (TextView) findViewById(R.id.kg);
-        kg.setText(String.valueOf("30") + " kg");
+        kg.setText(String.valueOf(30) + " kg");
         new Handler().postDelayed((new Runnable() {
             @Override
             public void run() {
@@ -41,7 +43,7 @@ public class HydrationWeightActivity extends Activity {
             @Override
             public void onScrollChanged() {
                 Log.d(TAG, "hsv getScrollX = " + hsv.getScrollX());
-                int scrollX = (hsv.getScrollX() / 10) + 20;
+                int scrollX = (hsv.getScrollX() / 5) + 20;
                 kg.setText(String.valueOf(scrollX) + " kg");
                 my_weight = scrollX;
             }
@@ -71,6 +73,16 @@ public class HydrationWeightActivity extends Activity {
         });
         sharedPref = HydrationWeightActivity.this.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        skip = (TextView)findViewById(R.id.skip);
+        skip.setPaintFlags(skip.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);//add underline.= =
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HydrationWeightActivity.this, HydrationHeightActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
     }
 
     @Override
