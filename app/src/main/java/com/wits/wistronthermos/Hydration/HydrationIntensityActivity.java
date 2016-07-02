@@ -2,6 +2,7 @@ package com.wits.wistronthermos.Hydration;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -44,7 +45,6 @@ public class HydrationIntensityActivity extends Activity {
 			public void onScrollChanged() {
 				Log.d(TAG, "hsv getScrollX = " + hsv.getScrollX());
 				int scrollX = (int) (hsv.getScrollX());
-				//todo: no good agrithm
 				if (isBetween(scrollX, 0, 213)) {
 					my_intensity = 1;
 					description.setText("EASY");
@@ -66,21 +66,6 @@ public class HydrationIntensityActivity extends Activity {
 					description.setText("MEGA");
 					descriptLog.setText("Feels almost impossible to keep going, out of breath, unale to talk, extreamely heavy amount of sweat.");
 				}
-//				if (scrollX == 100) {
-//
-//				} else if (scrollX == 300) {
-//
-//				} else if (scrollX == 500) {
-//
-//				} else if (scrollX == 700) {
-//					my_intensity = 4;
-//					description.setText("HARD");
-//					descriptLog.setText("Very diffcult to maintain exercise, can barely breathe and speak, heavy amount of sweat.");
-//				} else if (scrollX == 900) {
-//					my_intensity = 5;
-//					description.setText("MEGA");
-//					descriptLog.setText("Feels almost impossible to keep going, out of breath, unale to talk, extreamely heavy amount of sweat.");
-//				}
 				mTextView.setText(""+my_intensity);
 
 			}
@@ -103,9 +88,9 @@ public class HydrationIntensityActivity extends Activity {
 				editor.putString(getString(R.string.preference_user_intensity), String.valueOf(my_intensity));
 				editor.commit();
 
-//				Intent intent = new Intent(HydrationIntensityActivity.this, HydrationHeightActivity.class);
-//				startActivity(intent);
-//				overridePendingTransition(0, 0);
+				Intent intent = new Intent(HydrationIntensityActivity.this, HydrationGoalActivity.class);
+				startActivity(intent);
+				overridePendingTransition(0, 0);
 			}
 		});
 		sharedPref = HydrationIntensityActivity.this.getSharedPreferences(
@@ -115,9 +100,9 @@ public class HydrationIntensityActivity extends Activity {
 		skip.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-//				Intent intent = new Intent(HydrationIntensityActivity.this, HydrationHeightActivity.class);
-//				startActivity(intent);
-//				overridePendingTransition(0, 0);
+				Intent intent = new Intent(HydrationIntensityActivity.this, HydrationGoalActivity.class);
+				startActivity(intent);
+				overridePendingTransition(0, 0);
 			}
 		});
 

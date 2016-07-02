@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class HydrationPolicyActivity extends Activity {
 	SimpleDarkAdapter adapter;
 	ListView mListView;
 	TextView cancel;
+	LinearLayout listViewLinearLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +52,12 @@ public class HydrationPolicyActivity extends Activity {
 				onBackPressed();
 			}
 		});
+
+		listViewLinearLayout = (LinearLayout)findViewById(R.id.listViewLinearLayout);
+		String name = this.getIntent().getStringExtra("show_confirm_list");
+		if (name != null && name.equals("no")){
+			listViewLinearLayout.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

@@ -127,6 +127,8 @@
         </activity>
         <activity android:name=".Hydration.HydrationIntensityActivity">
         </activity>
+        <activity android:name=".Hydration.HydrationGoalActivity">
+        </activity>
     </application>
 
 </manifest>

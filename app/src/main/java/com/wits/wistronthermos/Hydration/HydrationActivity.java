@@ -31,6 +31,7 @@ public class HydrationActivity extends Activity {
 				switch (position){
 					case 0://Terms of Use
 						Intent intent = new Intent(HydrationActivity.this, HydrationPolicyActivity.class);
+						intent.putExtra("show_confirm_list","yes");
 						startActivity(intent);
 						overridePendingTransition(0, 0);
 						break;

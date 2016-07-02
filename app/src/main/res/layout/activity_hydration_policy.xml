@@ -50,7 +50,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/listViewLinearLayout">
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -85,8 +85,9 @@
         android:textColor="#80222222"
         android:gravity="center"
         android:id="@+id/textView13"
-        android:layout_above="@id/linearLayout"
+        android:layout_above="@id/listViewLinearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/view1"/>
+        android:layout_below="@+id/view1"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

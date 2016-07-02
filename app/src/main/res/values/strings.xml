@@ -5,6 +5,7 @@
     <string name="wake_up_lid_info">Use the enclosed charger to plug your Smart Lid inot a power source, such as a computer or wall adapter. Once the lid has power, it will wake up immediately.</string>
     <string name="fitbit_enable_info">Your Thermos Smart Lid app profile has officially been populated with your Fitbit data. Continue through set up. Update any information you like.</string>
     <string name="hydration_goal">Your hydration goal is set to the general baselinegoal ,which is provided for informational purposes only. Filling out a hydration profile will create a Suggested Hydration Goal catered to you and  your lifestyle.</string>
+    <string name="hydration_goal_finish">* Estimated, for informational purposes only.\n\nYour hydration goal is updated. You can make adjustments to your profile or set a custom goal in the Profile option of your menu.</string>
     <string name="skip_profile_setup">Skip Profile Setup.</string>
     <string name="limit_exceeded">Can select a maximum of %d images</string>
     <string name="already_selected" formatted="false">you already selected %d images (%d/1)</string>
