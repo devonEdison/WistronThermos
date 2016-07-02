@@ -48,7 +48,8 @@ public class InitSetupNoSmartLidFoundActivity extends Activity {
 		search_again_relativelayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent intent = new Intent(InitSetupNoSmartLidFoundActivity.this, InitSetupPairCompleteActivity.class);
+				Intent intent = new Intent(InitSetupNoSmartLidFoundActivity.this, InitSetupConnectActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 				startActivity(intent);
 			}
 		});

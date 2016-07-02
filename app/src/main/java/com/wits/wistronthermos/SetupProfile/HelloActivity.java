@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.wits.wistronthermos.Hydration.HydrationActivity;
 import com.wits.wistronthermos.R;
 import com.wits.wistronthermos.adapters.SimpleAdapter;
 
@@ -56,7 +55,7 @@ public class HelloActivity extends Activity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HelloActivity.this, HydrationActivity.class);
+                Intent intent = new Intent(HelloActivity.this, SetupProfileActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }

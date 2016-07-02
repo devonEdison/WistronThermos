@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wits.wistronthermos.Hydration.HydrationActivity;
 import com.wits.wistronthermos.R;
 
 public class InitSetupPairCompleteActivity extends Activity {
@@ -18,7 +19,7 @@ public class InitSetupPairCompleteActivity extends Activity {
 		next.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent intent = new Intent(InitSetupPairCompleteActivity.this, InitSetupNoSmartLidFoundActivity.class);
+				Intent intent = new Intent(InitSetupPairCompleteActivity.this, HydrationActivity.class);
 				startActivity(intent);
 				overridePendingTransition(0, 0);
 			}

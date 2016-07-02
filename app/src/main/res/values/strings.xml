@@ -24,6 +24,7 @@
     <string name="preference_user_height">preference_user_height</string>
     <string name="preference_user_email">preference_user_email</string>
     <string name="preference_user_gender">preference_user_gender</string>
+    <string name="preference_user_bottle_name1">preference_user_bottle_name1</string>
     <string name="preference_user_fitbit_access_token">preference_user_fitbit_access_token</string>
     <string name="preference_user_fitbit_user_id">preference_user_fitbit_user_id</string>
     <string name="preference_user_waterUnit">preference_user_waterUnit</string>

@@ -26,7 +26,8 @@ public class InitSetupActivity extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InitSetupActivity.this, InitSetupNoSmartLidFoundActivity.class);
+                Intent intent = new Intent(InitSetupActivity.this, InitSetupConnectActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
