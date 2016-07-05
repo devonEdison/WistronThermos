@@ -129,6 +129,8 @@
         </activity>
         <activity android:name=".Hydration.HydrationGoalActivity">
         </activity>
+        <activity android:name=".SlidingMenuSetupActivity">
+        </activity>
     </application>
 
 </manifest>
